@@ -1,7 +1,7 @@
 import React from 'react'
 import {View, Text, StyleSheet, Alert, TouchableOpacity, TouchableWithoutFeedback} from 'react-native'
 
-type Props = {
+interface Props {
   name: string;
 }
 const Header = (props: Props) => (  //소괄호는 jsx를 리턴할 때 사용 

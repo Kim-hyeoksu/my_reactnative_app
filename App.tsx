@@ -6,15 +6,30 @@
  */
 
 import React, {Component, useState} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Alert} from 'react-native';
 import Header from './src/header'
+import Generator from './src/generator';
+import NumList from './src/numlist'
 
 const App = () => {
   const [appName, setAppName] = useState('My First App!!')
+  const [random, setRandom] = useState([36, 999])
 
+  const onAddRandomNum = () => {
+    Alert.alert('add random number!')
+  }
   return (
     <View style={styles.mainView}>
       <Header name={appName}/>
+      <View>
+        <Text
+        style={styles.mainText}
+        onPress={()=>Alert.alert('text touch event')}
+        >Hello World
+        </Text>
+      </View>
+      <Generator add={onAddRandomNum}/>
+      <NumList num={random}/>
     </View>
   )
 }
@@ -26,7 +41,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingTop: 50,
     alignItems: 'center',
-    justifyContent: 'center'
+    // justifyContent: 'center'
   },
   subView: {
     backgroundColor: 'yellow',
