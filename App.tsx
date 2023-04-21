@@ -11,6 +11,7 @@ import Header from './src/header'
 import Generator from './src/generator';
 import NumList from './src/numlist'
 import Input from './src/input';
+import PickerComponent from './src/picker';
 
 const App = () => {
   const [appName, setAppName] = useState('My First App!!')
@@ -41,6 +42,7 @@ const App = () => {
 
   return (
     <View style={styles.mainView}>
+      <PickerComponent/>
       <TextInput
       value={myTextInput}
       style={styles.input}
