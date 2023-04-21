@@ -6,20 +6,15 @@
  */
 
 import React, {Component, useState} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import PropsChild from './propsChild'
+import {View, StyleSheet} from 'react-native';
+import Header from './src/header'
+
 const App = () => {
+  const [appName, setAppName] = useState('My First App!!')
+
   return (
     <View style={styles.mainView}>
-      <View style={styles.subView}>
-        <Text style={styles.mainText}>hello world</Text>
-      </View>
-      <View style={styles.subView}>
-        <Text>hello world</Text>
-      </View>
-      <View style={styles.anotherView}>
-        <Text style={styles.mainText}>hello world</Text>
-      </View>
+      <Header name={appName}/>
     </View>
   )
 }
@@ -27,17 +22,15 @@ const App = () => {
 
 const styles = StyleSheet.create({
   mainView: {
-    backgroundColor: 'green',
-    height: '100%',
+    flex: 1,
+    backgroundColor: 'white',
     paddingTop: 50,
     alignItems: 'center',
     justifyContent: 'center'
   },
   subView: {
-    flex: 1,
     backgroundColor: 'yellow',
     marginBottom: 10,
-    width: '50%'
   },
   anotherView: {
     flex: 2,
@@ -48,8 +41,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   mainText: {
-    fontSize: 50,
-    fontWeight: 'bold',
+    fontSize: 20,
+    fontWeight: 'normal',
     color: 'red',
     padding: 20
   }
