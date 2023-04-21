@@ -6,7 +6,7 @@
  */
 
 import React, {Component, useState} from 'react';
-import {View, Text, StyleSheet, Alert, ScrollView} from 'react-native';
+import {View, Text, StyleSheet, Alert, ScrollView, Button, TextInput} from 'react-native';
 import Header from './src/header'
 import Generator from './src/generator';
 import NumList from './src/numlist'
@@ -15,6 +15,12 @@ import Input from './src/input';
 const App = () => {
   const [appName, setAppName] = useState('My First App!!')
   const [random, setRandom] = useState([36, 999])
+  const [myTextInput, setMyTextInput] = useState<string>('')
+  const [alphabet, setAlphabet] = useState(['a', 'b', 'c', 'd'])
+
+  const onChangeInput = (event) => {
+    setMyTextInput(event)
+  }
 
   const onAddRandomNum = () => {
     const randomNum = Math.floor(Math.random()*100) + 1
@@ -28,8 +34,38 @@ const App = () => {
     setRandom(newArray)
   }
 
+  const onAddTextInput = () => {
+    setMyTextInput('')
+    setAlphabet((prevState)=>[...prevState, myTextInput])
+  }
+
   return (
     <View style={styles.mainView}>
+      <TextInput
+      value={myTextInput}
+      style={styles.input}
+      onChangeText={onChangeInput}
+      multiline={true}  //개행
+      maxLength={100}
+      autoCapitalize='none' //대문자 자동 수정 안함 
+      editable={true}
+      />
+      <Button
+        title="Add Text Input"
+        onPress={onAddTextInput}
+      />
+      <ScrollView style={{width: '100%'}}>
+        {
+          alphabet.map((item, idx) => (
+            <Text
+            style={styles.mainText}
+            key={idx}
+            >
+              {item}
+            </Text>
+          ))
+        }
+      </ScrollView>
       {/* <Header name={appName}/>
       <View>
         <Text
@@ -51,7 +87,6 @@ const App = () => {
       >
         <NumList num={random} delete={onNumDelete}/>
       </ScrollView> */}
-      <Input/>
     </View>
   )
 }
@@ -81,7 +116,16 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'normal',
     color: 'red',
-    padding: 20
+    padding: 20,
+    margin: 20,
+    backgroundColor: 'pink'
+  },
+  input: {
+    width: '100%',
+    backgroundColor: '#cecece',
+    marginTop: 20,
+    fontSize: 25,
+    padding: 10
   }
 })
 export default App;

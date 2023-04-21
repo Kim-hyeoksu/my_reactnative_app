@@ -9,6 +9,8 @@ const Input = () => {  //소괄호는 jsx를 리턴할 때 사용
   const onChangeInput = (event) => {
     setMyTextInput(event)
   }
+
+
   return (
     <View style={styles.mainView}>
       <TextInput
