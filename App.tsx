@@ -13,6 +13,7 @@ import NumList from './src/numlist'
 import Input from './src/input';
 import PickerComponent from './src/picker';
 import hyeoxu from './assets/images/hyeoxuundersakura.jpg'
+import Modal from './src/modal';
 
 const App = () => {
   const [appName, setAppName] = useState('My First App!!')
@@ -43,6 +44,7 @@ const App = () => {
 
   return (
     <View style={styles.mainView}>
+      <Modal/>
       <Image
       style={styles.image}
       //source={{uri: ''}}
