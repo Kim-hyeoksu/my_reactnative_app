@@ -6,12 +6,13 @@
  */
 
 import React, {Component, useState} from 'react';
-import {View, Text, StyleSheet, Alert, ScrollView, Button, TextInput} from 'react-native';
+import {View, Text, StyleSheet, Alert, ScrollView, Button, TextInput, Image} from 'react-native';
 import Header from './src/header'
 import Generator from './src/generator';
 import NumList from './src/numlist'
 import Input from './src/input';
 import PickerComponent from './src/picker';
+import hyeoxu from './assets/images/hyeoxuundersakura.jpg'
 
 const App = () => {
   const [appName, setAppName] = useState('My First App!!')
@@ -42,6 +43,12 @@ const App = () => {
 
   return (
     <View style={styles.mainView}>
+      <Image
+      style={styles.image}
+      //source={{uri: ''}}
+      source={hyeoxu}
+      onLoadEnd={()=>Alert.alert('image loaded')}
+      />
       <PickerComponent/>
       <TextInput
       value={myTextInput}
@@ -128,6 +135,11 @@ const styles = StyleSheet.create({
     marginTop: 20,
     fontSize: 25,
     padding: 10
+  },
+  image: {
+    width: '100%',
+    height: 500,
+    resizeMode: 'contain'
   }
 })
 export default App;
