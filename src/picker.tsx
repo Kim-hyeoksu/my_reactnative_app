@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {View, Text, StyleSheet, TextInput} from 'react-native'
+import {View, Text, StyleSheet, TextInput, ActivityIndicator, ScrollView} from 'react-native'
 import {Picker} from '@react-native-picker/picker';
 import Slider from '@react-native-community/slider';
 
@@ -26,6 +26,8 @@ const PickerComponent = () => {  //소괄호는 jsx를 리턴할 때 사용
       step={1}
       />
       <Text style={styles.input}>{value}</Text>
+      
+
       <Picker
       style={{marginTop: 20, height: 40, width: 250, backgroundColor:'green'}}
       selectedValue={country}
@@ -34,6 +36,13 @@ const PickerComponent = () => {  //소괄호는 jsx를 리턴할 때 사용
         <Picker.Item label='Korea' value='korea'/>
         <Picker.Item label='Canada' value='canada'/>
       </Picker>
+      <ActivityIndicator
+      style={{paddingTop: 50}}
+      size='large'
+      color='green'
+      animating={true}
+      
+      />
     </View>
   )
 }
